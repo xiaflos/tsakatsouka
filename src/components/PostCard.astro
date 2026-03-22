@@ -27,12 +27,16 @@ const postClass = `post-card ${isLarge ? 'post-card-large' : ''} ${thumbnail ? '
 
 <style>
 /* Post Feed */
+:global(.post-feed) {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .post-card {
   position: relative;
-  flex: 1 0 auto;
+  flex: 0 0 calc(33.333% - 2rem);
   display: flex;
-  position: relative;
-  height: 35vw;
+  height: 25vw;
   background: linear-gradient(135deg, #1f1f1f 0%, #111 100%) center center;
   background-size: cover;
   overflow: hidden;
@@ -49,7 +53,7 @@ const postClass = `post-card ${isLarge ? 'post-card-large' : ''} ${thumbnail ? '
 }
 
 .post-card-large {
-  flex: 1 1 100%;
+  flex: 0 0 calc(33.333% - 2rem);
 }
 
 .post-card-link {
