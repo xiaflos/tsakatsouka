@@ -43,14 +43,14 @@ const { title, description, thumbnail } = entry.data;
     <div class="post-link">
       <div>
         {next && (
-            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${next.id.replace(/\.(mdx?)$/, '')}`}>
+            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${next.id}`}>
                <span>&larr; {next.data.title}</span>
             </a>
         )}
       </div>
       <div>
         {prev && (
-            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${prev.id.replace(/\.(mdx?)$/, '')}`}>
+            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${prev.id}`}>
                <span>{prev.data.title} &rarr;</span>
             </a>
         )}

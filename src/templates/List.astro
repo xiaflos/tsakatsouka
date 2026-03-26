@@ -36,7 +36,7 @@ let postCounter = 0;
                 <PostCard
                     count={postCounter}
                     post={post}
-                    slug={baseSlug ? `${baseSlug}/${post.id.replace(/\.(mdx?)$/, '')}` : post.id.replace(/\.(mdx?)$/, '')}
+                    slug={baseSlug ? `${baseSlug}/${post.id}` : post.id}
                 />
             );
         })}

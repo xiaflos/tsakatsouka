@@ -24,7 +24,7 @@ export async function getStaticPaths() {
   const sortedSold = soldEntries.sort(sortDate);
 
   return pages
-    .filter((entry) => !entry.id.startsWith("index."))
+    .filter((entry) => entry.id !== "index")
     .map((entry) => {
       // Determine props based on templateKey
       let props = { entry };
@@ -44,7 +44,7 @@ export async function getStaticPaths() {
       }
 
       return {
-        params: { slug: entry.id.replace(/\.(mdx?)$/, '') },
+        params: { slug: entry.id },
         // If slug is 'index', it creates undefined path, which matches root '/'.
         // BUT we have src/pages/index.astro, which takes precedence.
         // So this route will NOT handle root.

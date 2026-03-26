@@ -22,7 +22,7 @@ const posts = allContent.filter(item => {
 });
 
 // Get index-page metadata (from pages collection)
-const indexPage = allPages.find(p => p.id.startsWith('index.'));
+const indexPage = allPages.find(p => p.id === 'index');
 const title = indexPage?.data.title || 'Clay';
 const description = indexPage?.data.description;
 
@@ -40,11 +40,10 @@ let postCounter = 0;
             // My [...slug].astro will handle mapping.
             // Here I need to generate the same link.
 
-            const bareId = post.id.replace(/\.(mdx?)$/, '');
-            let slug = bareId;
-            if (post.collection === 'work') slug = `work/${bareId}`;
-            if (post.collection === 'news') slug = `news/${bareId}`;
-            if (post.collection === 'sold') slug = `sold/${bareId}`;
+            let slug = post.id;
+            if (post.collection === 'work') slug = `work/${post.id}`;
+            if (post.collection === 'news') slug = `news/${post.id}`;
+            if (post.collection === 'sold') slug = `sold/${post.id}`;
             // Pages collection: 'bio' -> 'bio'.
 
             // Wait, legacy slug split logic:
