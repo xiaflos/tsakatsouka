@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { type CollectionEntry } from 'astro:content';
+import { render, type CollectionEntry } from 'astro:content';
 
 interface Props {
   entry: CollectionEntry<'pages'>;
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const { title, description, thumbnail } = entry.data;
 

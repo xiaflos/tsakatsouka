@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { type CollectionEntry } from 'astro:content';
+import { render, type CollectionEntry } from 'astro:content';
 
 interface Props {
   entry: CollectionEntry<'work'> | CollectionEntry<'news'> | CollectionEntry<'sold'>;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { entry, next, prev, baseSlug } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const { title, description, thumbnail } = entry.data;
 
@@ -43,14 +43,14 @@ const { title, description, thumbnail } = entry.data;
     <div class="post-link">
       <div>
         {next && (
-            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${next.slug}`}>
+            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${next.id.replace(/\.(mdx?)$/, '')}`}>
                <span>&larr; {next.data.title}</span>
             </a>
         )}
       </div>
       <div>
         {prev && (
-            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${prev.slug}`}>
+            <a style="display: flex; align-items: center; color: #131313; font-size: 2rem;" href={`/${baseSlug}/${prev.id.replace(/\.(mdx?)$/, '')}`}>
                <span>{prev.data.title} &rarr;</span>
             </a>
         )}

@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PostCard from '../components/PostCard.astro';
-import { type CollectionEntry } from 'astro:content';
+import { render, type CollectionEntry } from 'astro:content';
 
 interface Props {
   entry: CollectionEntry<'pages'>;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { entry, items = [], baseSlug } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const { title, description, thumbnail } = entry.data;
 
@@ -36,7 +36,7 @@ let postCounter = 0;
                 <PostCard
                     count={postCounter}
                     post={post}
-                    slug={baseSlug ? `${baseSlug}/${post.slug}` : post.slug}
+                    slug={baseSlug ? `${baseSlug}/${post.id.replace(/\.(mdx?)$/, '')}` : post.id.replace(/\.(mdx?)$/, '')}
                 />
             );
         })}
